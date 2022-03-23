@@ -224,6 +224,12 @@ To obtain the endpoint of the RDS DB, with just calling a `describe-db-instances
 aws rds describe-db-instances --db-instance-identifier "sakila-aws"
 ```
 
+
+Now we have the database access credentials:
+
+* User: admindb
+* Endpoint: sakila-aws.cxrtws4xiav1.eu-central-1.rds.amazonaws.com
+* Master-password: my-password
 === Associate the new parameter-group to the new RDS instance
 
 ```
