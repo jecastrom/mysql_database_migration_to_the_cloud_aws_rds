@@ -134,6 +134,10 @@ We need this information in order to authorize connection to the AWS database  `
 (Invoke-WebRequest ifconfig.me/ip).Content.Trim()
 ```
 
+====
+''''
+====
+
 
 === Verify support of our MySQL engine version from AWS
 
@@ -143,8 +147,11 @@ Here we verify the MySQL engine supported versions by AWS RDS, our MySQL databas
 aws rds describe-db-engine-versions --engine mysql --engine-version 8.0.26
 ```
 
-=== Create a new parameter-group
+====
+''''
+====
 
+=== Create a new parameter-group
 
 ```
 aws rds create-db-parameter-group --db-parameter-group-name "superuser" --description "restore sakila db"
@@ -161,6 +168,8 @@ aws rds ModifyDBParameterGroup --db-parameter-group-name "superuser" --parameter
 After modifying a parameter group AWS recommends to wait at least 5 minutes before we proceed to create the new instance.
 
 This allows Amazon RDS to fully complete the create action before the parameter group is used as the default for a new DB instance. However we want to add this new parameter-group instead of using it as default when creating the DB instance. This is why we have to modify the instance to add the parameter-group.
+
+== Important considerations before loading the DB to AWS
 
 Befor moving to the next topic, the following are the parameters that has to be done so we are able to proceed with loading the database to AWS RDS.
 
@@ -183,7 +192,9 @@ a new Parameter Group, adding the log_bin_trust_function_creators and set its va
 * Local_infile configuration needs to be enabled.
 ====
 
-
+====
+''''
+====
 
 
 === Provisioning the RDS instance
@@ -224,10 +235,12 @@ aws ec2 authorize-security-group-ingress --group-id sg-0f0fe8fea19b7b391 --ip-pe
 ```
 
 
-== Restoring database to AWS RDS
+== Restoring the database to AWS RDS
 * Loading the database using the MySQL Shell `util.loadDump()` function to AWS RDS
 
-
+```
+util.loadDump("sakila-aws", {threads: 16, deferTableIndexes: "all"})
+```
 
 
 ====
