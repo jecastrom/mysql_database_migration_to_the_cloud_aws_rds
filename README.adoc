@@ -120,14 +120,19 @@ util.dumpSchemas(["sakila"], "backup-sak-aws",{routines:true, compatibility: ["s
 image::https://user-images.githubusercontent.com/63274055/159733605-6d0b309f-3a83-4544-a8dc-c102acdd2fc8.gif[width=800]
 
 
-
-
-
-
-
 ====
 ''''
 ====
+
+== Provision the AWS RDS instance
+
+Here we verify the MySQL engine supported versions by AWS RDS, our MySQL database is v8.0.26
+
+```aws
+aws rds describe-db-engine-versions --engine mysql --engine-version 8.0.26
+```
+
+
 
 ====
 ''''
