@@ -216,6 +216,13 @@ This allows Amazon RDS to fully complete the create action before the parameter 
 aws rds create-db-instance --db-instance-identifier sakila-aws --db-instance-class db.t2.micro --engine mysql --master-username "admindb" --master-user-password "my-password" --engine-version 8.0.26 --storage-type gp2 --publicly-accessible --allocated-storage 20
 ```
 
+The output tells us the status of the RDS instance creation is "Creating". Therefore the endpoing is not available yet
+
+To obtain the endpoint of the RDS DB, with just calling a `describe-db-instances statement` we can get it.
+
+```
+aws rds describe-db-instances --db-instance-identifier "sakila-aws"
+```
 
 === Associate the new parameter-group to the new RDS instance
 
