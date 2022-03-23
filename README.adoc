@@ -128,7 +128,7 @@ image::https://user-images.githubusercontent.com/63274055/159733605-6d0b309f-3a8
 
 Here we verify the MySQL engine supported versions by AWS RDS, our MySQL database is v8.0.26
 
-```aws
+```bash
 aws rds describe-db-engine-versions --engine mysql --engine-version 8.0.26
 ```
 
