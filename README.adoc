@@ -197,7 +197,7 @@ a new Parameter Group, adding the log_bin_trust_function_creators and set its va
 ====
 
 
-=== Provisioning the RDS instance
+== Provisioning the RDS instance
 
 ```
 aws rds create-db-instance --db-instance-identifier sakila-aws --db-instance-class db.t2.micro --engine mysql --master-username "admindb" --master-user-password "my-password" --engine-version 8.0.26 --storage-type gp2 --publicly-accessible --allocated-storage 20
