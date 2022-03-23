@@ -126,14 +126,14 @@ image::https://user-images.githubusercontent.com/63274055/159733605-6d0b309f-3a8
 
 == Provisioning the AWS RDS instance
 
-=== Retrieve our current public IP address
+=== Retrieving our current public IP address
 
-We need this information in order to authorize connection to the database from `port 3306` from our work or home.
-So we make a note of it:
+We need this information in order to authorize connection to the AWS database  `port 3306` from our work or home. On the windows terminal, we use the following command and we make a note of it:
 
 ```bash
 (Invoke-WebRequest ifconfig.me/ip).Content.Trim()
 ```
+
 
 === Verify support of our MySQL engine version from AWS
 
