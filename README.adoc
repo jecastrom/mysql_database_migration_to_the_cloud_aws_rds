@@ -1,4 +1,4 @@
-= Mini Project - MySQL Database migration to the cloud using CLIs
+= Mini Project - MySQL Database migration to the cloud using Command Line Interfaces
 :stylesheet: boot-darkly.css
 :linkcss: boot-darkly.css
 :image-url-ironhack: https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png
@@ -145,13 +145,88 @@ aws rds describe-db-engine-versions --engine mysql --engine-version 8.0.26
 
 === Create a new parameter-group
 
-aws rds create-db-parameter-group --db-parameter-group-name ("superuser") --description "restore sakila db"
+
+```
+aws rds create-db-parameter-group --db-parameter-group-name "superuser" --description "restore sakila db"
+```
+
+=== Modify the parameter-group 
+
+To associate  the parameter `log_bin_trust_function_creators` and set its value to 1.
+
+```
+aws rds ModifyDBParameterGroup --db-parameter-group-name "superuser" --parameters "ParameterName='log_bin_trust_function_creators', ParameterValue=1,ApplyMethod=immediate"
+```
+
+After modifying a parameter group AWS recommends to wait at least 5 minutes before we proceed to create the new instance.
+
+This allows Amazon RDS to fully complete the create action before the parameter group is used as the default for a new DB instance. However we want to add this new parameter-group instead of using it as default when creating the DB instance. This is why we have to modify the instance to add the parameter-group.
+
+Befor moving to the next topic, the following are the parameters that has to be done so we are able to proceed with loading the database to AWS RDS.
+
+A common error message when loading databases to AWS RDS is:
+
+WARNING: Error processing schema •sakila• : You do not have the SUPER privilege and binary logging is enabled 
+(you want to use the less safe variable) 
+il.10adDump: You do not have the SUPER privilege and binary logging is enabled (you want to use t 
+he less safe 10 variable) (MYSQLSH 1419) 
+STUDENT 
+> disconnect 
+
+image::https://user-images.githubusercontent.com/63274055/159787786-84ca87ab-ade4-4e3b-9dba-1c28248e6055.png[width=400]
+[NOTE]
+====
+* SUPER user privileges are required on the AWS RDS user to be able to load 
+the database with "user defined SQL code". This can be achieved by creating 
+a new Parameter Group, adding the log_bin_trust_function_creators and set its value to ’1′.
+
+* Local_infile configuration needs to be enabled.
+====
 
 
+
+
+=== Provisioning the RDS instance
+
+```
+aws rds create-db-instance --db-instance-identifier sakila-aws --db-instance-class db.t2.micro --engine mysql --master-username "admindb" --master-user-password "my-password" --engine-version 8.0.26 --storage-type gp2 --publicly-accessible --allocated-storage 20
+```
+
+
+=== Associate the new parameter-group to the new RDS instance
+
+```
+aws rds modify-db-instance --db-parameter-group-name "superuser"
+```
 
 ====
 ''''
 ====
+
+== Adding a Inbound or Ingress rule to open port 3306 to our IP connections
+
+=== Obtain Security Group details
+
+```
+aws rds describe-db-security-groups
+```
+
+=== Obtaining Security Group ID
+
+```
+aws ec2 describe-security-groups --group-names default --query 'SecurityGroups[*].[GroupId]'
+```
+
+=== Add inbound rule to security group
+
+```
+aws ec2 authorize-security-group-ingress --group-id sg-0f0fe8fea19b7b391 --ip-permissions '[{"IpProtocol": "tcp", "FromPort": 3306, "ToPort": 3306, "IpRanges": [{"CidrIp": "90.186.84.137/32"}]}]'
+```
+
+
+== Restoring database to AWS RDS
+* Loading the database using the MySQL Shell `util.loadDump()` function to AWS RDS
+
 
 
 
