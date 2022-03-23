@@ -62,11 +62,38 @@ toc::[]
 
 
 
-== Migrate the Sakila database to a cloud provider using the MySql and the cloud provider CLI.
+== The tools to be used for the migration:
 
-I am going to migrate the sakila database to AWS RDS (Relational Database Service).
+* MySQL Shell 8.0.26 - on Windows 
+* MySQL Shell Dump & Load utilities
+* AWS account
+* AWS CLI v2
 
-The tools to be used for the migration:
+== Creating a dump of the Sakila database (Backup)
+
+To create the backup I used the MySQL Shell Schema Dump Utility
+
+[NOTE]
+====
+* The minimum required set of privileges of the user account used to run the utility:
+ `BACKUP_ADMIN`, `EVENT`, `RELOAD`, `SELECT`, `SHOW VIEW`, and `TRIGGER`.
+
+
+
+====
+
+
+
+First we log in to the MySQL instance using MySQL Shell with the credentials.
+
+ 
+
+```shell
+
+
+
+
+
 
 
 
