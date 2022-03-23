@@ -98,13 +98,13 @@ We run the following command to create the backup:
 \connect jorge@localhost
 ```
 ```js
-util.dumpSchemas(["sakila"], "backup\sak-aws",{routines:true, compatibility: ["strip_definers", "strip_restricted_grants"]})
+util.dumpSchemas(["sakila"], "backup-sak-aws",{routines:true, compatibility: ["strip_definers", "strip_restricted_grants"]})
 ```
 === `util.dumpSchemas()` function explained
 
 * `util.dumpSchemas(["sakila"]` Command to run the dump utility on the "schema" we choose.
 
-* `"backup/sak-aws"` path to the directory where the backup will be stored. If the directory does not exist, MySQL shell will create it. The directory will be created by default at:
+* `"backup/sak-aws"` path to the `directory` where the backup will be stored. If the directory does not exist, MySQL shell will create it. The directory will be created by default at:
 
 `C:\Program Files\MySQL\MySQL Shell 8.0\bin`
 
@@ -117,7 +117,7 @@ util.dumpSchemas(["sakila"], "backup\sak-aws",{routines:true, compatibility: ["s
 ** `strip_restricted_grants` Certain privileges are restricted in Cloud Database Services. Attempting to create users granting these privileges would fail, so this option allows dumped GRANT statements to be stripped of these privileges.
 
 
-image::https://user-images.githubusercontent.com/63274055/159714425-ca5ecb90-07e3-42b8-aa03-2d12aff77a06.gif[width=800]
+image::https://user-images.githubusercontent.com/63274055/159724914-27868733-c18f-4849-a190-802eb1d85c73.gif[width=800]
 
 
 
