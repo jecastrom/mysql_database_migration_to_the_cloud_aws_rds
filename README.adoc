@@ -192,7 +192,7 @@ aws rds describe-db-parameter-groups
 === Create a new parameter-group
 
 ```
-aws rds create-db-parameter-group --db-parameter-group-name "superuser" --description "restore sakila db"
+aws rds create-db-parameter-group --db-parameter-group-name "superuser" --db-parameter-group-family "mysql8.0" --description "restore sakila db"
 ```
 
 === Modify the parameter-group 
