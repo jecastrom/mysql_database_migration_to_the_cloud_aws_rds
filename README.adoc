@@ -207,9 +207,7 @@ After modifying a parameter group AWS recommends to wait at least 5 minutes befo
 
 This allows Amazon RDS to fully complete the create action before the parameter group is used as the default for a new DB instance. However we want to add this new parameter-group instead of using it as default when creating the DB instance. This is why we have to modify the instance to add the parameter-group.
 
-====
-''''
-====
+
 
 
 == Provisioning the RDS instance
