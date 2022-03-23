@@ -77,7 +77,8 @@ To create the backup I used the MySQL Shell Schema Dump Utility
 ====
  * MySQL shell must be run as Administrator, otherwise we will have an error message:
 
- `Util.dumpSchemas: Could not create directory \\?\C:\Program Files\MySQL\MySQL Shell 8.0\bin\sak-aws: 
+ `Util.dumpSchemas: Could not create directory
+ \\?\C:\Program Files\MySQL\MySQL Shell 8.0\bin\sak-aws: 
  Access is denied. (RuntimeError)`
 
 * The dump and load utilities must be run in JavaScript mode.
