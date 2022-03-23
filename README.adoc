@@ -177,7 +177,7 @@ aws rds describe-db-engine-versions --engine mysql --engine-version 8.0.26
 ====
 ''''
 ====
-=== Retrieve information on the DB parameter-group
+=== Retrieve information on the DB parameter-groups
 
 To be able to create a new parameter-group, the parameter-group-family is required.
 
