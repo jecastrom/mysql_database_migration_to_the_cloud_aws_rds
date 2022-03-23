@@ -96,7 +96,7 @@ We run the following command to create the backup:
 \connect jorge@localhost
 ```
 ```js
-util.dumpSchemas(["sakila"], "backup/sak-aws",{routines:true, compatibility: ["strip_definers", "strip_restricted_grants"]})
+util.dumpSchemas(["sakila"], "C:\Users\jcast\sak-aws",{routines:true, compatibility: ["strip_definers", "strip_restricted_grants"]})
 ```
 === `util.dumpSchemas()` function explained
 
