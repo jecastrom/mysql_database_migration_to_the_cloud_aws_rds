@@ -84,11 +84,13 @@ To create the backup I used the MySQL Shell Schema Dump Utility
 
 
 
-First we log in to the MySQL instance using MySQL Shell with the credentials.
+First we log in to the MySQL instance using MySQL Shell in JavaScript mode with the credentials.
 
  
 
-```shell
+```js
+\connect jorge@localhost
+```
 
 
 
