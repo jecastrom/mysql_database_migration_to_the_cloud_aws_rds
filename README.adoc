@@ -100,6 +100,12 @@ util.dumpSchemas(["sakila"], "backup/sak-aws",{routines:true, compatibility: ["s
 ```
 
 
+`util.dumpSchemas(["sakila"]` Command to run the dump utility on the "schema" we choose.
+
+`"backup/sak-aws"` path to the directory where the backup will be stored. If the directory does not exist, MySQL shell will create it.
+
+`routines:true` Option to include functions and store procedures for the schema in the dump.
+
 
 
 
