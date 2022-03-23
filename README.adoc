@@ -100,13 +100,17 @@ util.dumpSchemas(["sakila"], "backup/sak-aws",{routines:true, compatibility: ["s
 ```
 === util.dumpSchemas() function explained
 
-`util.dumpSchemas(["sakila"]` Command to run the dump utility on the "schema" we choose.
+* `util.dumpSchemas(["sakila"]` Command to run the dump utility on the "schema" we choose.
 
-`"backup/sak-aws"` path to the directory where the backup will be stored. If the directory does not exist, MySQL shell will create it.
+* `"backup/sak-aws"` path to the directory where the backup will be stored. If the directory does not exist, MySQL shell will create it.
 
-`routines:true` Option to include functions and store procedures for the schema in the dump.
+* `routines:true` Option to include functions and store procedures for the schema in the dump.
 
+* `compatibility` takes an array of strings to specify compatibility notations.
 
+** `strip_definers` Database Cloud providers require special privileges to create these objects with a definer other than the user loading the schema. By stripping the DEFINER clause, these objects will be created with that default definer. Views and Routines will additionally have their SQL SECURITY clause changed from DEFINER to INVOKER. This ensures that the access permissions of the account querying or calling them are applied, instead of the user that created them. This should be sufficient for most users, but if your database security model requires that views and routines have more privileges than their invoker, you will need to manually modify the schema before loading it.
+
+** `strip_restricted_grants` Certain privileges are restricted in Cloud Database Services. Attempting to create users granting these privileges would fail, so this option allows dumped GRANT statements to be stripped of these privileges.
 
 
 
