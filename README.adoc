@@ -98,7 +98,7 @@ We run the following command to create the backup:
 ```js
 util.dumpSchemas(["sakila"], "backup/sak-aws",{routines:true, compatibility: ["strip_definers", "strip_restricted_grants"]})
 ```
-
+=== util.dumpSchemas() function explained
 
 `util.dumpSchemas(["sakila"]` Command to run the dump utility on the "schema" we choose.
 
