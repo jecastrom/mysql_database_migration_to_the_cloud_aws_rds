@@ -104,7 +104,7 @@ util.dumpSchemas(["sakila"], "backup-sak-aws",{routines:true, compatibility: ["s
 
 * `util.dumpSchemas(["sakila"]` Command to run the dump utility on the "schema" we choose.
 
-* `"backup/sak-aws"` path to the `directory` where the backup will be stored. If the directory does not exist, MySQL shell will create it. The directory will be created by default at:
+* `"backup-sak-aws"` its the `directory` where the backup will be stored. If the directory does not exist, MySQL shell will create it. The directory will be created by default at:
 
 `C:\Program Files\MySQL\MySQL Shell 8.0\bin`
 
@@ -126,11 +126,24 @@ image::https://user-images.githubusercontent.com/63274055/159733605-6d0b309f-3a8
 
 == Provisioning the AWS RDS instance
 
+=== Retrieve our current public IP address
+
+We need this information in order to authorize connection to the database from `port 3306` from our work or home.
+So we make a note of it:
+
+```bash
+(Invoke-WebRequest ifconfig.me/ip).Content.Trim()
+```
+
+=== Verify support of our MySQL engine version from AWS
+
 Here we verify the MySQL engine supported versions by AWS RDS, our MySQL database is v8.0.26
 
 ```bash
 aws rds describe-db-engine-versions --engine mysql --engine-version 8.0.26
 ```
+
+
 
 
 
