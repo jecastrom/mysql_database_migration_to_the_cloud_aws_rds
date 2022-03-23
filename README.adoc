@@ -173,7 +173,7 @@ he less safe 10 variable) (MYSQLSH 1419)
 STUDENT 
 > disconnect 
 
-image::https://user-images.githubusercontent.com/63274055/159787786-84ca87ab-ade4-4e3b-9dba-1c28248e6055.png[width=600]
+image::https://user-images.githubusercontent.com/63274055/159787786-84ca87ab-ade4-4e3b-9dba-1c28248e6055.png[width=800]
 [NOTE]
 ====
 * SUPER user privileges are required on the AWS RDS user to be able to load 
