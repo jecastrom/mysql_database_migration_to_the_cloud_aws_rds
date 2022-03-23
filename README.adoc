@@ -117,7 +117,7 @@ util.dumpSchemas(["sakila"], "backup-sak-aws",{routines:true, compatibility: ["s
 ** `strip_restricted_grants` Certain privileges are restricted in Cloud Database Services. Attempting to create users granting these privileges would fail, so this option allows dumped GRANT statements to be stripped of these privileges.
 
 
-image::https://user-images.githubusercontent.com/63274055/159724914-27868733-c18f-4849-a190-802eb1d85c73.gif[width=800]
+image::https://user-images.githubusercontent.com/63274055/159733605-6d0b309f-3a83-4544-a8dc-c102acdd2fc8.gif[width=800]
 
 
 
