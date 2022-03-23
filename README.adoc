@@ -245,7 +245,7 @@ Now we have the database access credentials:
 === Associate the new parameter-group to the new RDS instance
 
 ```
-aws rds modify-db-instance --db-parameter-group-name "superuser"
+aws rds modify-db-instance --db-instance-identifier "sakila-aws" --db-parameter-group-name "superuser"
 ```
 
 ====
