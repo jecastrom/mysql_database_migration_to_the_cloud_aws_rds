@@ -110,7 +110,7 @@ First we log in to the MySQL instance using MySQL Shell in JavaScript mode with 
 ''''
 ====
 
-{script-url}[Solutions script only]
+
 
 ====
 ''''
