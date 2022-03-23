@@ -98,13 +98,15 @@ We run the following command to create the backup:
 \connect jorge@localhost
 ```
 ```js
-util.dumpSchemas(["sakila"], "C:\Users\jcast\sak-aws",{routines:true, compatibility: ["strip_definers", "strip_restricted_grants"]})
+util.dumpSchemas(["sakila"], "backup\sak-aws",{routines:true, compatibility: ["strip_definers", "strip_restricted_grants"]})
 ```
 === `util.dumpSchemas()` function explained
 
 * `util.dumpSchemas(["sakila"]` Command to run the dump utility on the "schema" we choose.
 
-* `"backup/sak-aws"` path to the directory where the backup will be stored. If the directory does not exist, MySQL shell will create it.
+* `"backup/sak-aws"` path to the directory where the backup will be stored. If the directory does not exist, MySQL shell will create it. The directory will be created by default at:
+
+`C:\Program Files\MySQL\MySQL Shell 8.0\bin`
 
 * `routines:true` Option to include functions and store procedures for the schema in the dump.
 
