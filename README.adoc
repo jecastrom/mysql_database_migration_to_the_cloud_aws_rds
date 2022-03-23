@@ -218,7 +218,6 @@ aws rds modify-db-instance --db-parameter-group-name "superuser"
 ''''
 ====
 
-=== Adding a Inbound or Ingress rule to open port 3306 to our IP connections
 
 === Obtain Security Group details
 
