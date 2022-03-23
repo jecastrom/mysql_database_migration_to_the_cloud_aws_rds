@@ -75,17 +75,18 @@ To create the backup I used the MySQL Shell Schema Dump Utility
 
 [NOTE]
 ====
-* The minimum required set of privileges of the user account used to run the utility:
- `BACKUP_ADMIN`, `EVENT`, `RELOAD`, `SELECT`, `SHOW VIEW`, and `TRIGGER`.
-
  * MySQL shell must be run as Administrator, otherwise we will have an error message:
  `Util.dumpSchemas: Could not create directory \\?\C:\Program Files\MySQL\MySQL Shell 8.0\bin\sak-aws: Access is denied.
  (RuntimeError)`
+
+* The dump and load utilities must be run in JavaScript mode
+* The minimum required set of privileges of the user account used to run the utility:
+ `BACKUP_ADMIN`, `EVENT`, `RELOAD`, `SELECT`, `SHOW VIEW`, and `TRIGGER`.
 ====
 
 
 
-First we log in to the MySQL instance using MySQL Shell in JavaScript mode with the credentials. Then we find out the MySQL server version we are running (Top left of the shell). We will need that information to provision the RDS instance.
+First we log in to the MySQL Shell with the MySQL credentials. Then we find out the MySQL server version we are running (Top left of the shell). We will need that information to provision the RDS instance.
 
 
 ```js
