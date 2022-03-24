@@ -69,11 +69,11 @@ toc::[]
 * AWS account
 * AWS CLI v2
 
-On the AWS CLI I have set the default outputs as json but I will specify to --output table option so the output is more aesthetically pleasing.
+On the AWS CLI I have set the default outputs as json however I will specify to --output table option so the output is more aesthetically pleasing whenever possible.
 
 == Important considerations before loading the DB to AWS
 
-Befor moving to the next topic, the following are the parameters that has to be done so we are able to proceed with loading the database to AWS RDS.
+Before moving to the next topic, the following are the parameters that has to be done so we are able to proceed with loading the database to AWS RDS.
 
 A common error message when loading databases to AWS RDS is:
 
