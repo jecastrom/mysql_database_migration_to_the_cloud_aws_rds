@@ -67,7 +67,7 @@ toc::[]
 * MySQL Shell 8.0.26 - on Windows 
 * MySQL Shell Dump & Load utilities
 * AWS account
-* AWS CLI v2
+* AWS CLI v2 + JMESPath query language
 
 On the AWS CLI I have set the default outputs as json however I will specify to --output table option so the output is more aesthetically pleasing whenever possible.
 
@@ -232,7 +232,7 @@ aws rds create-db-instance --db-instance-identifier sakila-aws --db-instance-cla
 
 
 ```
-aws rds wait db-instance-available --db-instance-identifier sakila --query 'DBInstances[].Endpoint[].Address[]'
+ aws rds describe-db-instances wait db-instance-available --db-instance-identifier sakila-aws --query 'DBInstances[].Endpoint[].Address[]' --output json
 ```
 
 
