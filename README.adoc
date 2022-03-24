@@ -204,7 +204,7 @@ Amazon RDS is a managed service that does not provide SYS access (SUPER privileg
 Once we are done with the migration, we can de-associate and parameter from the RDS instance.
 
 ```
-aws rds create-db-parameter-group --db-parameter-group-name "superuser" --db-parameter-group-family "mysql8.0" --description "restore sakila db"
+aws rds create-db-parameter-group --db-parameter-group-name "superuser" --db-parameter-group-family "mysql8.0" --description "restore db from dump"
 ```
 
 === Modify the parameter-group 
