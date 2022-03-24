@@ -197,7 +197,9 @@ aws rds describe-db-parameter-groups --output table
 
 For AWS RDS instances, we manage our database engine configuration through the use of parameters in a `DB parameter group`. DB parameter groups act as a container for engine configuration values that are applied to one or more DB instances.
 
-In order to set out workaround to set wider privileges to the master account and be able to load the backup, we have to create a new parameter-group. To modify the default existing parameter group is not allowed by AWS. It is best practice to create a new parameter-group, modify the parameter we need, then associate the new parameter-group to the new RDS instance.
+In order to set wider privileges to the master account (SUPER user) and be able to load the backup, we have to create a new parameter-group. To modify the default existing parameter group is not allowed by AWS. It is best practice to create a new parameter-group, modify the parameter we need, then associate the new parameter-group to the new RDS instance. 
+
+Amazon RDS is a managed service that does not provide SYS access (SUPER privileges). If binary logging is enabled on our MySQL DB instance, we need to set the `log_bin_trust_function_creators` parameter to true in the custom DB parameter group.
 
 Once we are done with the migration, we can de-associate and parameter from the RDS instance.
 
