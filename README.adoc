@@ -69,6 +69,8 @@ toc::[]
 * AWS account
 * AWS CLI v2
 
+On the AWS CLI I have set the default outputs as json but I will specify to --output table option so the output is more aesthetically pleasing.
+
 == Important considerations before loading the DB to AWS
 
 Befor moving to the next topic, the following are the parameters that has to be done so we are able to proceed with loading the database to AWS RDS.
@@ -151,11 +153,11 @@ image::https://user-images.githubusercontent.com/63274055/159908554-b69db053-101
 ''''
 ====
 
-== Task before provisioning the AWS RDS and loading
+== Task before provisioning the AWS RDS and loading (Windows Powershell)
 
 === Retrieving our current public IP address
 
-We need this information in order to authorize connection to the AWS database  `port 3306` from our work or home. On the windows terminal, we use the following command and we make a note of it:
+We need this information in order to authorize connection to the AWS database  `port 3306` from our work or home. So we use the following command and we make a note of it:
 
 ```
 (Invoke-WebRequest ifconfig.me/ip).Content.Trim()
