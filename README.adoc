@@ -6,7 +6,7 @@
 :description:
 //:fn-xxx: Add the explanation foot note here bla bla
 :toc:
-:toc-title: In this mini-project I will be executing the migration of an on-premises database to a cloud provider using mostly the CLI.
+:toc-title: In this mini-project I will be executing the migration of an on-premises database to a cloud provider using mostly the CLI and making a script to automate the process.
 :toc-placement!:
 :toclevels: 5
 ifdef::env-github[]
