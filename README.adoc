@@ -193,6 +193,12 @@ aws rds describe-db-parameter-groups --output table
 ====
 === Create a new parameter-group
 
+* Why do we need a new parameter-group?
+
+In order to set out workaround to set wider privileges to the master account and be able to load the backup, we have to create a new parameter-group. To modify the default existing parameter group is not allowed by AWS. It is best practice to create a new parameter-group, modify the parameter we need, then associate the new parameter-group to the new RDS instance.
+
+Once we are done with the migration, we can de-associate and parameter from the RDS instance.
+
 ```
 aws rds create-db-parameter-group --db-parameter-group-name "superuser" --db-parameter-group-family "mysql8.0" --description "restore sakila db"
 ```
