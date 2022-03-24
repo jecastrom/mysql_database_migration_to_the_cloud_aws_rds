@@ -184,7 +184,7 @@ aws rds describe-db-engine-versions --engine mysql --engine-version 8.0.26
 To be able to create a new parameter-group, the parameter-group-family is required.
 
 ```
-aws rds describe-db-parameter-groups
+aws rds describe-db-parameter-groups --output table
 ```
 
 
