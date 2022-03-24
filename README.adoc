@@ -153,7 +153,7 @@ image::https://user-images.githubusercontent.com/63274055/159908554-b69db053-101
 ''''
 ====
 
-== Task before provisioning the AWS RDS and loading (Windows Powershell)
+== Tasks before provisioning the AWS RDS and loading (Windows Powershell)
 
 === Retrieving our current public IP address
 
@@ -228,14 +228,14 @@ This allows Amazon RDS to fully complete the create action before the parameter 
 aws rds create-db-instance --db-instance-identifier sakila-aws --db-instance-class db.t2.micro --engine mysql --master-username "admindb" --master-user-password "my-password" --engine-version 8.0.26 --storage-type gp2 --publicly-accessible --allocated-storage 20
 ```
 
-or
+
+
 ```
-aws rds create-db-instance wait change-set-create-complete --db-instance-identifier sakila-aws --db-instance-class db.t2.micro --engine mysql --master-username "admindb" --master-user-password "my-password" --engine-version 8.0.26 --storage-type gp2 --publicly-accessible --allocated-storage 20
+aws rds wait db-instance-available --db-instance-identifier sakila --query 'DBInstances[].Endpoint[].Address[]'
 ```
 
 
-
-The output tells us the status of the RDS instance creation is "Creating". Therefore the endpoing is not available yet
+The output tells us the status of the RDS instance creation is "Creating". Therefore the endpoint address is not available yet.
 
 To obtain the endpoint of the RDS DB, with just calling a `describe-db-instances statement` we can get it.
 
