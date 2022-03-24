@@ -1,4 +1,4 @@
-= Mini Project - MySQL Database migration to the cloud using Command Line Interfaces
+= Mini Project - Automating MySQL Database migration to the cloud
 :stylesheet: boot-darkly.css
 :linkcss: boot-darkly.css
 :image-url-ironhack: https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png
@@ -232,7 +232,7 @@ aws rds create-db-instance --db-instance-identifier sakila-aws --db-instance-cla
 
 
 ```
- aws rds describe-db-instances wait db-instance-available --db-instance-identifier sakila-aws --query 'DBInstances[].Endpoint[].Address[]' --output json
+ aws rds describe-db-instances --db-instance-identifier sakila-aws --query 'DBInstances[].Endpoint[].Address[]' --output json
 ```
 
 
