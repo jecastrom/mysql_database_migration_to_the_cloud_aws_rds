@@ -256,7 +256,7 @@ Now we have the database access credentials:
 * Endpoint: sakila-aws.cxrtws4xiav1.eu-central-1.rds.amazonaws.com
 * Master-password: my-password
 
-image::path[width=800]
+image::https://user-images.githubusercontent.com/63274055/160065987-41abfd9f-b398-4e43-a525-886bf76fad59.png[width=800]
 === Associate the new parameter-group to the new RDS instance
 
 ```bash
