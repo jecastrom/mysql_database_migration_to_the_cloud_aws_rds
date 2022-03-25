@@ -12,8 +12,7 @@ mysqlsh
 
 # Creating the dump with the utilility dump Schemas:
 
-util.dumpSchemas(["sakila"], "backup-sak-aws", { routines:true, `
-            compatibility: ["strip_definers", "strip_restricted_grants"] })
+util.dumpSchemas(["sakila"], "backup-sak-aws", { routines:true, compatibility: ["strip_definers", "strip_restricted_grants"] })
 
 
 
