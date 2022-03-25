@@ -72,3 +72,9 @@ $params = '-u', $user, '-h', $host_, '-p', $pass
 
 
 & $mysqlsh @params -e util.loadDump("sakila-aws", { threads: 16, deferTableIndexes: "all" })
+
+
+
+aws rds describe-db-engine-versions `
+    --engine mysql `
+    --engine-version 8.0.26
