@@ -1,21 +1,23 @@
+### MySQL Shell commands
+
+mysqlsh
+
+
+
 # Logging in to MySQL Shell
+
 \connect jorge@localhost
 
 
 
+# Creating the dump with the utilility dump Schemas:
+
+util.dumpSchemas(["sakila"], "backup-sak-aws", { routines:true, `
+            compatibility: ["strip_definers", "strip_restricted_grants"] })
 
 
 
-
-
-
-
-
-
-
-
-
-
+# Provisioning the RDS instance
 
 aws rds create-db-instance `
     --db-instance-identifier sakila-aws `
