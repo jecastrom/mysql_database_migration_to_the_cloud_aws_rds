@@ -172,7 +172,7 @@ We need this information in order to authorize connection to the AWS database  `
 
 Here we verify the MySQL engine supported versions by AWS RDS, our MySQL database is v8.0.26
 
-```
+```bash
 aws rds describe-db-engine-versions --engine mysql --engine-version 8.0.26
 ```
 
@@ -212,7 +212,7 @@ aws rds create-db-parameter-group --db-parameter-group-name "superuser" --db-par
 
 To associate  the parameter `log_bin_trust_function_creators` and set its value to 1.
 
-```
+```bash
 aws rds modify-db-parameter-group --db-parameter-group-name "superuser" --parameters "ParameterName='log_bin_trust_function_creators', ParameterValue=1,ApplyMethod=immediate"
 ```
 
@@ -227,25 +227,28 @@ This allows Amazon RDS to fully complete the create action before the parameter 
 
 Now we are ready to create our AWS RDS instance:
 
-```
+```bash
 aws rds create-db-instance --db-instance-identifier sakila-aws --db-instance-class db.t2.micro --engine mysql --master-username "admindb" --master-user-password "my-password" --engine-version 8.0.26 --storage-type gp2 --publicly-accessible --allocated-storage 20
 ```
 
 
 The output tells us the status of the RDS instance creation is `Creating`. Therefore the endpoint address is not available yet. It takes on average 10 minutes for the instance to be on `available` status
 
-To obtain the endpoint of the RDS DB, this is possible with just calling a `describe-db-instances statement`. Now to only retrieve the Endpoint Address, we can use the `--filter` or `--query` options to filter responses. As the --filter option is supported by a limited number of AWS commands and sub-commands, I prefer to use `--query`. This option can be used with all AWS commands and uses exclusively the `JMESPath` JSON scripting language.
+To obtain the endpoint of the RDS DB, this is possible with just calling a `describe-db-instances statement`. As the output of this command its quite lengthy, to only retrieve the basic information we need such as DBInstanceIdentifier , DBInstanceIdentifier , we can use the `--filter` or `--query` options to filter responses. As the --filter option is supported by a limited number of AWS commands and sub-commands, I prefer to use `--query`. This option can be used with all AWS commands and uses exclusively the `JMESPath` JSON scripting language.
 
 `--query` operates in the actual JSON response and does not need support from the AWS API to support on the filtering. 
 
-```
+```bash
 aws rds describe-db-instances --db-instance-identifier sakila-aws --query 'DBInstances[].Endpoint[].Address[]'
 ```
 
-In this way we are getting the information we want. However with the help of the `db-instance-available` command, we can combine the three commands and ask AWS: 
+In this way we are getting the information we want. However with the help of the `db-instance-available` command, we can combine the three commands with pipes and ask AWS: 
 
 Create my DB, wait until the InstanceStatus becomes `Available`, then tell me the endpoint address.
 
+```bash
+aws rds create-db-instance --db-instance-identifier sakila-aws --db-instance-class db.t2.micro --engine mysql --master-username "admindb" --master-user-password "my-password" --engine-version 8.0.26 --storage-type gp2 --publicly-accessible --allocated-storage 20 | aws rds wait db-instance-available --db-instance-identifier sakila-aws | aws rds describe-db-instances --db-instance-identifier sakila-aws --query "DBInstances[*].[Engine,DBInstanceIdentifier,EngineVersion,DBInstanceStatus,Endpoint.Address,AllocatedStorage,DBInstanceClass,MasterUsername,Endpoint.Port]"
+```
 
 Now we have the database access credentials:
 
@@ -253,10 +256,10 @@ Now we have the database access credentials:
 * Endpoint: sakila-aws.cxrtws4xiav1.eu-central-1.rds.amazonaws.com
 * Master-password: my-password
 
-
+image::path[width=800]
 === Associate the new parameter-group to the new RDS instance
 
-```
+```bash
 aws rds modify-db-instance --db-instance-identifier "sakila-aws" --db-parameter-group-name "superuser"
 ```
 
@@ -267,19 +270,19 @@ aws rds modify-db-instance --db-instance-identifier "sakila-aws" --db-parameter-
 
 === Obtain Security Group details
 
-```
+```powershell
 aws rds describe-db-security-groups
 ```
 
 === Obtaining Security Group ID
 
-```
+```bash
 aws ec2 describe-security-groups --group-names default --query 'SecurityGroups[*].[GroupId]'
 ```
 
 === Add inbound rule to security group
 
-```
+```bash
 aws ec2 authorize-security-group-ingress --group-id sg-0f0fe8fea19b7b391 --protocol tcp --port 3306 --cidr 90.186.84.137/32
 ```
 
@@ -289,7 +292,7 @@ aws ec2 authorize-security-group-ingress --group-id sg-0f0fe8fea19b7b391 --proto
 
 * Loading the database using the MySQL Shell `util.loadDump()` function to AWS RDS
 
-```
+```js
 util.loadDump("sakila-aws", {threads: 16, deferTableIndexes: "all"})
 ```
 
