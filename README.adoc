@@ -232,7 +232,7 @@ aws rds create-db-instance --db-instance-identifier sakila-aws --db-instance-cla
 ```
 
 
-The output tells us the status of the RDS instance creation is "Creating". Therefore the endpoint address is not available yet. It takes on average 10 minutes for the instance to be on `available` status
+The output tells us the status of the RDS instance creation is `Creating`. Therefore the endpoint address is not available yet. It takes on average 10 minutes for the instance to be on `available` status
 
 To obtain the endpoint of the RDS DB, with just calling a `describe-db-instances statement` we can get it. Now to only retrieve the Endpoint Address, we can use the `--filter` or `--query` options to filter responses. As the --filter option is supported by a limited number of AWS commands and sub-commands, I prefer to use `--query`. This option can be used with all AWS commands and uses exclusively the `JMESPath` JSON scripting language.
 
