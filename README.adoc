@@ -244,7 +244,7 @@ aws rds describe-db-instances --db-instance-identifier sakila-aws --query 'DBIns
 
 In this way we are getting the information we want. However with the help of the `db-instance-available` command, we can combine the three commands and ask AWS: 
 
-Create my DB, wait until the status becomes `available, then tell me the endpoint address.`
+Create my DB, wait until the InstanceStatus becomes `Available`, then tell me the endpoint address.
 
 
 Now we have the database access credentials:
