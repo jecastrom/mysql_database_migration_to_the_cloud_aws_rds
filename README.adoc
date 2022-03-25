@@ -239,7 +239,7 @@ To obtain the endpoint of the RDS DB, with just calling a `describe-db-instances
 `--query` operates in the actual JSON response and does not need support from the AWS API to support on the filtering. 
 
 ```
-aws rds describe-db-instances --db-instance-identifier sakila-aws --query 'DBInstances[].Endpoint[].Address[]' --output json
+aws rds describe-db-instances --db-instance-identifier sakila-aws --query 'DBInstances[].Endpoint[].Address[]'
 ```
 
 
