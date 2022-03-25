@@ -242,7 +242,9 @@ To obtain the endpoint of the RDS DB, with just calling a `describe-db-instances
 aws rds describe-db-instances --db-instance-identifier sakila-aws --query 'DBInstances[].Endpoint[].Address[]'
 ```
 
+In this way we are getting the information we want. However with the help of the `db-instance-available` command, we can combine the three commands and ask AWS: 
 
+Create my DB, wait until the status becomes `available, then tell me the endpoint address.`
 
 
 Now we have the database access credentials:
