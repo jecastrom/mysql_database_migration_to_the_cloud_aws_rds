@@ -51,7 +51,7 @@ image::{image-url-ironhack}[width=70]
 
 {my-name}
 
-
+image::https://user-images.githubusercontent.com/63274055/160199432-e971f77f-91d7-49a3-828e-23a5d7029530.png[width=400]
                                                      
 ====
 ''''
@@ -68,6 +68,7 @@ toc::[]
 * MySQL Shell Dump & Load utilities
 * AWS account
 * AWS CLI v2 + JMESPath query language for JSON
+
 
 On the AWS CLI I have set the default outputs as json however I will specify to --output table option so the output is more aesthetically pleasing whenever possible.
 
