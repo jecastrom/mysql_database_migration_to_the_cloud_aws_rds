@@ -49,3 +49,26 @@ aws rds modify-db-instance `
     --db-instance-identifier "sakila-aws" `
     --db-parameter-group-name "superuser"
 
+
+
+
+# We have already added the inbound rule to the security group, so the subsecuent RDS created have already 
+# the ingress trafic rule (authorize our IP to connect)
+
+
+
+
+# Loading (Restoring) the database to AWS RDS (MySQL Shell JS mode)
+
+# We loggin with our AWS RDS credentials
+
+
+$user = 'admindb'
+$pass = 'my-password'
+$host_ = 'sakita-aws.cxrxxxxxiav1.eu-central-l.rds.amazonaws.com'
+
+$mysqlsh = 'C:\Program Files\MySQL\MySQL Shell 8.0\bin\mysqlsh.exe'
+$params = '-u', $user, '-h', $host_, '-p', $pass
+
+
+& $mysqlsh @params -e util.loadDump("sakila-aws", { threads: 16, deferTableIndexes: "all" })
