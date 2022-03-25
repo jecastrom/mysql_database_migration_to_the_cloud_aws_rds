@@ -228,7 +228,11 @@ aws rds create-db-parameter-group `
 To associate  the parameter `log_bin_trust_function_creators` and set its value to 1.
 
 ```bash
-aws rds modify-db-parameter-group --db-parameter-group-name "superuser" --parameters "ParameterName='log_bin_trust_function_creators', ParameterValue=1,ApplyMethod=immediate"
+
+aws rds modify-db-parameter-group `
+    --db-parameter-group-name "superuser" `
+    --parameters "ParameterName='log_bin_trust_function_creators', `
+                  ParameterValue=1,ApplyMethod=immediate"
 ```
 
 After modifying a parameter group AWS recommends to wait at least 5 minutes before we proceed to create the new instance.
