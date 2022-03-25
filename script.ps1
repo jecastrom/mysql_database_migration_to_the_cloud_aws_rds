@@ -45,5 +45,7 @@ aws rds create-db-instance `
 # associate the --paramater-group.
 
 
-
+aws rds modify-db-instance `
+    --db-instance-identifier "sakila-aws" `
+    --db-parameter-group-name "superuser"
 
