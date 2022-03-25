@@ -75,6 +75,7 @@ $params = '-u', $user, '-h', $host_, '-p', $pass
 
 ************************************************
 
-aws rds describe-db-engine-versions `
-    --engine mysql `
-    --engine-version 8.0.26
+aws rds modify-db-parameter-group `
+    --db-parameter-group-name "superuser" `
+    --parameters "ParameterName='log_bin_trust_function_creators', `
+                  ParameterValue=1,ApplyMethod=immediate"

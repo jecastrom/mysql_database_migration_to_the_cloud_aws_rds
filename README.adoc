@@ -195,7 +195,8 @@ aws rds describe-db-engine-versions `
 To be able to create a new parameter-group, the parameter-group-family is required.
 
 ```
-aws rds describe-db-parameter-groups --output table
+aws rds describe-db-parameter-groups `
+    --output table
 ```
 
 
@@ -216,7 +217,10 @@ Once we are done with the migration, we can de-associate and parameter from the 
 
 To create a new parameter-group:
 ```
-aws rds create-db-parameter-group --db-parameter-group-name "superuser" --db-parameter-group-family "mysql8.0" --description "restore db from dump"
+aws rds create-db-parameter-group `
+    --db-parameter-group-name "superuser" `
+    --db-parameter-group-family "mysql8.0" `
+    --description "restore db from dump"
 ```
 
 === Modify the parameter-group 
