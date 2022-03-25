@@ -42,7 +42,8 @@ aws rds create-db-instance `
 
 
 # As we have already created for the first time the "SUPER" user --paramater-group, we can go straight to
-# associaling the --paramater-group to the new RDS DB. 
+# creating the RDS then associate the --paramater-group.
+
 
 
 
