@@ -9,14 +9,14 @@ $user = 'jcastro'
 $pass = 'my-password'
 $host_ = 'localhost'
 
-$mysql = 'C:\Program Files\MySQL\MySQL Shell 8.0\bin\mysqlsh.exe'
+$mysqlsh = 'C:\Program Files\MySQL\MySQL Shell 8.0\bin\mysqlsh.exe'
 $params = '-u', $user, '-h', $host_, '-p', $pass
 
 
 
 # Creating the dump with the utilility dump Schemas:
 
-& $mysql @params -e util.dumpSchemas(["sakila"], "backup-sak-aws", { routines:true, compatibility: ["strip_definers", "strip_restricted_grants"] })
+& $mysqlsh @params -e util.dumpSchemas(["sakila"], "backup-sak-aws", { routines:true, compatibility: ["strip_definers", "strip_restricted_grants"] })
 
 
 
