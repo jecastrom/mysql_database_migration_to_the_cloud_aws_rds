@@ -38,3 +38,11 @@ aws rds create-db-instance `
     --db-instance-identifier sakila-aws `
     --query "DBInstances[*].[Engine,DBInstanceIdentifier,EngineVersion,DBInstanceStatus,`
     Endpoint.Address,AllocatedStorage,DBInstanceClass,MasterUsername,Endpoint.Port]"
+
+
+
+# As we have already created for the first time the "SUPER" user --paramater-group, we can go straight to
+# associaling the --paramater-group to the new RDS DB. 
+
+
+

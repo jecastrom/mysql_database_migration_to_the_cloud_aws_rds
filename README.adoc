@@ -148,7 +148,7 @@ util.dumpSchemas(["sakila"], "backup-sak-aws",{routines:true, compatibility: ["s
 
 image::https://user-images.githubusercontent.com/63274055/159908554-b69db053-101d-43b9-b7b1-603b4069d794.gif[width=800]
 
-Unlike the `mysqldump` utility that outputs only one file, Utility Dump Schema, Instance and table generate a dump directory containing several files, so its divided in several chunks.
+Unlike the `mysqldump` utility that outputs only one file, `Utility Dump Schema, Instance and Table` generate a dump directory containing several files, so its divided in several chunks.
 
 The utility does this to increase performance on data streaming. Instead of having only one file with create table statements, one after the other, the tables are spread in different chucks and loaded in parallel, all at the same time with a high number of simultaneous threads connections to the new instance.
 
@@ -251,7 +251,7 @@ In this way we are getting the information we want. However with the help of the
 
 "Create my DB, wait until the InstanceStatus becomes `Available`, then give me the basic information"
 
-```
+```bash
 aws rds create-db-instance `
     --db-instance-identifier sakila-aws `
     --db-instance-class db.t2.micro `
