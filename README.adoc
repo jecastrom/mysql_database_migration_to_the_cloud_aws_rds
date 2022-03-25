@@ -51,7 +51,7 @@ image::{image-url-ironhack}[width=70]
 
 {my-name}
 
-image::https://user-images.githubusercontent.com/63274055/160199432-e971f77f-91d7-49a3-828e-23a5d7029530.png[width=800]
+image::https://user-images.githubusercontent.com/63274055/160211479-26b3a741-56a2-4cdd-ab3a-7c7bf36ff747.png[width=800]
                                                      
 ====
 ''''
@@ -59,6 +59,8 @@ image::https://user-images.githubusercontent.com/63274055/160199432-e971f77f-91d
 toc::[]
 
 {description}
+
+== What do I want to accomplish and how?
 
 
 
