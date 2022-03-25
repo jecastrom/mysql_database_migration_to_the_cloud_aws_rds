@@ -270,6 +270,7 @@ aws rds create-db-instance `
     Endpoint.Address,AllocatedStorage,DBInstanceClass,MasterUsername,Endpoint.Port]"
 ```
 
+
 Now we have the database access credentials:
 
 * User: admindb
