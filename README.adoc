@@ -322,7 +322,7 @@ util.loadDump("sakila-aws", {threads: 16, deferTableIndexes: "all"})
 ''''
 ====
 
-== Final script to automate the migration of on-premises MySQL databases to AWS RDS (Under development)
+== Script to automate the migration of on-premises MySQL databases to AWS RDS (Under development)
 
 ```
 ### MySQL Shell commands
