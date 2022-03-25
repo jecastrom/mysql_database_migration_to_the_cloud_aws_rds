@@ -1,12 +1,23 @@
 ### MySQL Shell commands
 
-mysqlsh
-
-
-
-# Logging in to MySQL Shell
-
+mysqlsh # manual change
 \connect jorge@localhost
+
+# For scripting:
+
+$user = 'jcastro'
+$pass = 'my-password'
+$host_ = 'localhost'
+
+$mysql = 'C:\Program Files\MySQL\MySQL Shell 8.0\bin\mysqlsh.exe'
+$params = '-u', $user, '-h', $host_, '-p', $pass
+
+
+
+
+
+
+
 
 
 
