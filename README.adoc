@@ -245,8 +245,16 @@ This allows Amazon RDS to fully complete the create action before the parameter 
 
 Now we are ready to create our AWS RDS instance:
 
-```bash
-aws rds create-db-instance --db-instance-identifier sakila-aws --db-instance-class db.t2.micro --engine mysql --master-username "admindb" --master-user-password "my-password" --engine-version 8.0.26 --storage-type gp2 --publicly-accessible --allocated-storage 20
+```
+aws rds create-db-instance `
+    --db-instance-identifier sakila-aws `
+    --db-instance-class db.t2.micro --engine mysql `
+    --master-username "admindb" `
+    --master-user-password "my-password" `
+    --engine-version 8.0.26 `
+    --storage-type gp2 `
+    --publicly-accessible `
+    --allocated-storage 19
 ```
 
 
@@ -257,8 +265,10 @@ To obtain the endpoint of the RDS DB, this is possible with just calling a `desc
 `--query` operates in the actual JSON response and does not need support from the AWS API to support on the filtering. 
 
 To query out new RDS:
-```bash
-aws rds describe-db-instances --db-instance-identifier sakila-aws --query 'DBInstances[].Endpoint[].Address[]'
+```
+aws rds describe-db-instances `
+    --db-instance-identifier sakila-aws `
+    --query 'DBInstances[].Endpoint[].Address[]'
 ```
 
 In this way we are getting the information we want. However with the help of the `db-instance-available` command, we could combine the three commands with pipes and ask AWS the following:

@@ -75,7 +75,4 @@ $params = '-u', $user, '-h', $host_, '-p', $pass
 
 ************************************************
 
-aws rds modify-db-parameter-group `
-    --db-parameter-group-name "superuser" `
-    --parameters "ParameterName='log_bin_trust_function_creators', `
-                  ParameterValue=1,ApplyMethod=immediate"
+
