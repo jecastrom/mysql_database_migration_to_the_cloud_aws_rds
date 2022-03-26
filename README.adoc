@@ -2,6 +2,7 @@
 :stylesheet: boot-darkly.css
 :linkcss: boot-darkly.css
 :image-url-ironhack: https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png
+:pic-binlog: https://user-images.githubusercontent.com/63274055/160231921-f109902f-3faa-49fb-a3eb-f3d866df5b38.png
 :my-name: Jorge Castro DAPT NOV2021
 :description:
 //:fn-xxx: Add the explanation foot note here bla bla
@@ -76,9 +77,18 @@ On the AWS CLI I have set the default outputs as json however I will specify to 
 
 == Important considerations before loading the DB to AWS
 
-Before moving to the next topic, the following are the parameters that has to be done so we are able to proceed with loading the database to AWS RDS.
+* Make sure `Local_infile` configuration needs to be enabled.
 
-A common error message when loading databases to AWS RDS is:
+To check the status of the `Local_infile` variable:
+```
+show variables like 'local_infile';
+```
+To turn ON the variable:
+```
+SET PERSIST local_infile = 1;
+```
+
+* A common error message when loading databases to AWS RDS is:
 
 WARNING: Error processing schema •sakila• : You do not have the SUPER privilege and binary logging is enabled 
 (you want to use the less safe variable) 
@@ -90,9 +100,22 @@ STUDENT
 image::https://user-images.githubusercontent.com/63274055/159787786-84ca87ab-ade4-4e3b-9dba-1c28248e6055.png[width=800]
 [NOTE]
 ====
-* SUPER user privileges are required on the AWS RDS user to be able to load 
+
+
+`*_Cause:_*` 
+
+The error arises when we try to import functions or triggers. The error arises only if the `binary logging` option, which is required for the replication, is `turned on` for the MySQL server.
+
+`*_Solutions:_*`
+
+* SUPER user privileges are required on the AWS RDS user running the import to be able to load 
 the database with "user defined SQL code". This can be achieved by creating 
 a new Parameter Group, adding the log_bin_trust_function_creators and set its value to ’1′.
+
+
+The above steps should only be done temporarily in order to import databases. Once the import is complete, we should replace the customed parameter-group my the default one. This will ensure that the AWS RDS instance remains secure.The above steps should only be done temporarily in order to import databases. Once the import is complete, we should replace the customed parameter-group my the default one. This will ensure that the AWS RDS instance remains secure.
+
+
 
 * Local_infile configuration needs to be enabled.
 ====
@@ -328,7 +351,7 @@ aws ec2 describe-security-groups --group-names default --query 'SecurityGroups[*
 === Add inbound rule to security group
 
 ```bash
-aws ec2 authorize-security-group-ingress --group-id sg-0f0fe8fea19b7b391 --protocol tcp --port 3306 --cidr 90.186.84.137/32
+aws ec2 authorize-security-group-ingress --group-id sg-0f0fe8fea19b7b391 --protocol tcp --port 3306 --cidr 52.47.83.107/32
 ```
 
 
