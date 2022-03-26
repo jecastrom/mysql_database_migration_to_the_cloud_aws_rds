@@ -76,8 +76,3 @@ $params = '-u', $user, '-h', $host_, '-p', $pass
 ************************************************
 
 
-aws ec2 authorize-security-group-ingress `
-    --group-id sg-0f0fe8fea19b7b391 `
-    --protocol tcp `
-    --port 3306 `
-    --cidr 52.47.83.107/32
