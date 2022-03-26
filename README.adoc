@@ -52,8 +52,7 @@ image::{image-url-ironhack}[width=70]
 
 {my-name}
 
-image::https://user-images.githubusercontent.com/63274055/160211479-26b3a741-56a2-4cdd-ab3a-7c7bf36ff747.png[width=800]
-                                                     
+                                      
 ====
 ''''
 ====
