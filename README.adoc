@@ -109,15 +109,14 @@ The error arises when we try to import functions or triggers. The error arises o
 `*_Solutions:_*`
 
 * SUPER user privileges are required on the AWS RDS user running the import to be able to load 
-the database with "user defined SQL code". This can be achieved by creating 
+the database with `user defined SQL code`. This can be achieved by creating 
 a new Parameter Group, adding the log_bin_trust_function_creators and set its value to ’1′.
 
+The above steps should only be done temporarily in order to import databases. Once the import is complete, we should replace the custom parameter-group my the default one. This will ensure that the AWS RDS instance remains secure.The above steps should only be done temporarily in order to import databases. Once the import is complete, we should replace the custom parameter-group my the default one. This will ensure that the AWS RDS instance remains secure.
 
-The above steps should only be done temporarily in order to import databases. Once the import is complete, we should replace the customed parameter-group my the default one. This will ensure that the AWS RDS instance remains secure.The above steps should only be done temporarily in order to import databases. Once the import is complete, we should replace the customed parameter-group my the default one. This will ensure that the AWS RDS instance remains secure.
+In this case I want to be able to import the Sakila database with all the store procedures, triggers and functions it has already done by me.
 
 
-
-* Local_infile configuration needs to be enabled.
 ====
 
 ====
