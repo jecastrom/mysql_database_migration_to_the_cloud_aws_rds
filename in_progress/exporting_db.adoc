@@ -101,7 +101,11 @@ We run the following command to create the logical backup:
 util.dumpInstance("C:/Users/jcast/data/my_dump_schema")
 ```
 
-=== Options
+=== Options for filtering:
+
+Some of the options include:
+
+`loadData:` true / false: Setting this option to `false` excludes the data in the dump from loading. 
 
 
 
