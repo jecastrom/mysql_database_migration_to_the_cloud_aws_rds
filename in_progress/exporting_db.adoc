@@ -66,16 +66,6 @@ util.dumpInstance("C:/Users/jcast/testdump/my_instance_dump", {dryRun: true})
 ```
 
 
-
-
-
-
-
-
-
-
-To create the dump I used the MySQL Shell Schema Dump Instance
-
 [NOTE]
 ====
  * MySQL shell must be run as Administrator, otherwise we will have an error message:
@@ -100,7 +90,7 @@ To create the dump I used the MySQL Shell Schema Dump Instance
 
 First we log in to the MySQL Shell with the MySQL credentials. Then we find out the MySQL server version we are running (Top left of the shell). We will need that information to provision the RDS instance.
 
-We run the following command to create the backup:
+We run the following command to create the logical backup:
 
 
 
@@ -108,24 +98,11 @@ We run the following command to create the backup:
 \connect backup_user@localhost
 ```
 ```js
-util.dumpSchemas(["sakila"], ""C:/Users/jcast/data/my_dump_schema"",)
+util.dumpInstance("C:/Users/jcast/data/my_dump_schema")
 ```
 
-=== `util.dumpInstance()` function explained
+=== Options
 
-* `util.dumpSchemas(["sakila"]` Command to run the dump utility on the "schema" we choose.
-
-* `"backup-sak-aws"` its the `directory` where the backup will be stored. If the directory does not exist, MySQL shell will create it. The directory will be created by default at:
-
-`C:\Program Files\MySQL\MySQL Shell 8.0\bin`
-
-* `routines:true` Option to include functions and store procedures for the schema in the dump.
-
-* `compatibility` takes an array of strings to specify compatibility notations.
-
-** `strip_definers` Database Cloud providers require special privileges to create these objects with a definer other than the user loading the schema. By stripping the DEFINER clause, these objects will be created with that default definer. Views and Routines will additionally have their SQL SECURITY clause changed from DEFINER to INVOKER. This ensures that the access permissions of the account querying or calling them are applied, instead of the user that created them. This should be sufficient for most users, but if your database security model requires that views and routines have more privileges than their invoker, you will need to manually modify the schema before loading it.
-
-** `strip_restricted_grants` Certain privileges are restricted in Cloud Database Services. Attempting to create users granting these privileges would fail, so this option allows dumped GRANT statements to be stripped of these privileges.
 
 
 
