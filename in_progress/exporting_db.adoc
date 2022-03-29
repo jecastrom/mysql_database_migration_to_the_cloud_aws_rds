@@ -45,9 +45,9 @@ endif::[]
 image::{banner}[width=1200]
 
 
-== Creating a dump of the Sakila database (Backup on a single schema)
+== Creating a dump of a locally hosted DB instance (Logical backup)
 
-To create the backup I used the MySQL Shell Schema Dump Utility
+To create the dump I used the MySQL Shell Schema Dump Instance
 
 [NOTE]
 ====
@@ -58,8 +58,14 @@ To create the backup I used the MySQL Shell Schema Dump Utility
  Access is denied. (RuntimeError)`
 
 * The dump and load utilities must be run in JavaScript or Python mode.
-* The minimum required set of privileges of the user account used to run the utility:
+* The minimum required set of privileges of the user account used to run the utility are:
  `BACKUP_ADMIN`, `EVENT`, `RELOAD`, `SELECT`, `SHOW VIEW`, and `TRIGGER`.
+
+ * Depending on por use case, If the `binary log` is required to be included in the dump, the user running the utility needs `REPLICATION CLIENT` privileges. Otherwise the dump will continue as normal but without the `binary log`. A warning message is displayed:
+
+ ```
+ WARNING: Could not fetch the binary log information: MySQL Error 1227 (42000): Access denied; you need (at least one of) the SUPER, REPLICATION CLIENT privilege(s) for this operation
+ ```
 ====
 
 
