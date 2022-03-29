@@ -55,6 +55,10 @@ MySQL Shell has three utility functions for dumping Tables, Schemas and instance
 
 * Util:dumpInstance()
 
+For loading:
+
+* util.loadDump
+
 Here I will be focusing on the dump instance. This function has an array of options, very granular to specify arguments to filter what we need or do not need in our instance dump such as specified schemas and tables, users and their roles and grants, events, routines, and triggers from the import.
 
 Users and their roles and grants are excluded from the load by default.
@@ -101,11 +105,9 @@ We run the following command to create the logical backup:
 util.dumpInstance("C:/Users/jcast/data/my_dump_schema")
 ```
 
-=== Options for filtering:
 
-Some of the options include:
 
-`loadData:` true / false: Setting this option to `false` excludes the data in the dump from loading. 
+
 
 
 
@@ -124,12 +126,6 @@ image::https://user-images.githubusercontent.com/63274055/160140660-1174385a-fe1
 == Creating a dump of the entire database instance (Total of 10 schemas. 60 million rows)
 
 
-```
-util.dumpInstance("C:/Users/jcast/data/my_instance_dump"")
-```
-====
-''''
-====
 
 
 image::https://github.com/jecastrom/automating_database_migration_to_the_cloud/blob/main/img/instancedump.gif[width=800]
