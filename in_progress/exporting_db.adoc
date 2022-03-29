@@ -1,0 +1,125 @@
+:stylesheet: boot-darkly.css
+:linkcss: boot-darkly.css
+:my-name: Jorge Castro DAPT NOV2021
+:description:
+//:fn-xxx: Add the explanation foot note here bla bla
+ifdef::env-github[]
+:sectnums:
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+:experimental:
+:table-caption!:
+:example-caption!:
+:figure-caption!:
+:idprefix:
+:idseparator: -
+:linkattrs:
+:banner: https://user-images.githubusercontent.com/63274055/160254383-fba6d3c3-6f83-4c1f-8eb0-974bc1bd4e2f.png
+:fontawesome-ref: http://fortawesome.github.io/Font-Awesome
+:icon-inline: {user-ref}/#inline-icons
+:icon-attribute: {user-ref}/#size-rotate-and-flip
+:video-ref: {user-ref}/#video
+:checklist-ref: {user-ref}/#checklists
+:list-marker: {user-ref}/#custom-markers
+:list-number: {user-ref}/#numbering-styles
+:imagesdir-ref: {user-ref}/#imagesdir
+:image-attributes: {user-ref}/#put-images-in-their-place
+:toc-ref: {user-ref}/#table-of-contents
+:para-ref: {user-ref}/#paragraph
+:literal-ref: {user-ref}/#literal-text-and-blocks
+:admon-ref: {user-ref}/#admonition
+:bold-ref: {user-ref}/#bold-and-italic
+:quote-ref: {user-ref}/#quotation-marks-and-apostrophes
+:sub-ref: {user-ref}/#subscript-and-superscript
+:mono-ref: {user-ref}/#monospace
+:css-ref: {user-ref}/#custom-styling-with-attributes
+:pass-ref: {user-ref}/#passthrough-macros
+endif::[]
+ifndef::env-github[]
+:imagesdir: ./
+endif::[]
+
+image::{banner}[width=1200]
+
+
+== Creating a dump of the Sakila database (Backup on a single schema)
+
+To create the backup I used the MySQL Shell Schema Dump Utility
+
+[NOTE]
+====
+ * MySQL shell must be run as Administrator, otherwise we will have an error message:
+
+ `Util.dumpSchemas: Could not create directory
+ \\?\C:\Program Files\MySQL\MySQL Shell 8.0\bin\sak-aws: 
+ Access is denied. (RuntimeError)`
+
+* The dump and load utilities must be run in JavaScript or Python mode.
+* The minimum required set of privileges of the user account used to run the utility:
+ `BACKUP_ADMIN`, `EVENT`, `RELOAD`, `SELECT`, `SHOW VIEW`, and `TRIGGER`.
+====
+
+
+
+First we log in to the MySQL Shell with the MySQL credentials. Then we find out the MySQL server version we are running (Top left of the shell). We will need that information to provision the RDS instance.
+
+We run the following command to create the backup:
+
+
+
+```js
+\connect backup_user@localhost
+```
+```js
+util.dumpSchemas(["sakila"], "backup-sak-aws",{routines:true, compatibility: ["strip_definers", "strip_restricted_grants"]})
+```
+
+=== `util.dumpSchemas()` function explained
+
+* `util.dumpSchemas(["sakila"]` Command to run the dump utility on the "schema" we choose.
+
+* `"backup-sak-aws"` its the `directory` where the backup will be stored. If the directory does not exist, MySQL shell will create it. The directory will be created by default at:
+
+`C:\Program Files\MySQL\MySQL Shell 8.0\bin`
+
+* `routines:true` Option to include functions and store procedures for the schema in the dump.
+
+* `compatibility` takes an array of strings to specify compatibility notations.
+
+** `strip_definers` Database Cloud providers require special privileges to create these objects with a definer other than the user loading the schema. By stripping the DEFINER clause, these objects will be created with that default definer. Views and Routines will additionally have their SQL SECURITY clause changed from DEFINER to INVOKER. This ensures that the access permissions of the account querying or calling them are applied, instead of the user that created them. This should be sufficient for most users, but if your database security model requires that views and routines have more privileges than their invoker, you will need to manually modify the schema before loading it.
+
+** `strip_restricted_grants` Certain privileges are restricted in Cloud Database Services. Attempting to create users granting these privileges would fail, so this option allows dumped GRANT statements to be stripped of these privileges.
+
+
+
+Data files produced by the MySQL Shell Schema Dump Utility include DDL files for creating the schema structure, compressed .tsv files that contain the data, and .json metadata files.
+
+Unlike the `mysqldump` utility that outputs only one file, `Utility Dump Schema, Instance and Table` generate a dump directory containing several files, so its divided in several chunks.
+
+The utility does this to increase performance on data streaming. Instead of having only one file with create table statements, one after the other, the tables are spread in different chucks and loaded in parallel, all at the same time with a high number of simultaneous threads connections to the new instance.
+
+image::https://user-images.githubusercontent.com/63274055/160140660-1174385a-fe12-4549-8f1e-ff3846750cca.png[width=600]
+====
+''''
+====
+
+== Creating a dump of the entire database instance (Total of 10 schemas. 60 million rows)
+
+
+```
+util.dumpInstance("C:/Users/jcast/data/my_instance_dump"")
+```
+====
+''''
+====
+
+
+image::https://github.com/jecastrom/automating_database_migration_to_the_cloud/blob/main/img/instancedump.gif[width=800]
+
+
+====
+''''
+====
