@@ -47,6 +47,20 @@ image::{banner}[width=1200]
 
 == Creating a dump of a locally hosted DB instance (Logical backup)
 
+MySQL Shell has three utility functions for dumping Tables, Schemas and instances:
+
+* util.dumpTables()
+
+* Util.dumpSchema()
+
+* Util:dumpInstance()
+
+Here I will be focusing on the dump instance function.
+
+
+
+
+
 To create the dump I used the MySQL Shell Schema Dump Instance
 
 [NOTE]
@@ -81,10 +95,10 @@ We run the following command to create the backup:
 \connect backup_user@localhost
 ```
 ```js
-util.dumpSchemas(["sakila"], "backup-sak-aws",{routines:true, compatibility: ["strip_definers", "strip_restricted_grants"]})
+util.dumpSchemas(["sakila"], ""C:/Users/jcast/data/my_dump_schema"",)
 ```
 
-=== `util.dumpSchemas()` function explained
+=== `util.dumpInstance()` function explained
 
 * `util.dumpSchemas(["sakila"]` Command to run the dump utility on the "schema" we choose.
 
