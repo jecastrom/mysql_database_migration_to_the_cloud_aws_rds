@@ -90,6 +90,12 @@ util.dumpInstance("C:/Users/jcast/testdump/my_instance_dump", {dryRun: true})
  ```
 ====
 
+=== Creating a dump directly onto a cloud storage bucket
+
+The MySQL Shell Dump Utilities support the export directly into a `Oracle Cloud Infrastructure Object Storage bucket`. However to export a dump into an AWS S3 is currently not supportted:
+
+WARNING: Util.dumpInstance: Directory handling for s3 protocol is not supported. (ArgumentError)
+
 
 
 First we log in to the MySQL Shell with the MySQL credentials. Then we find out the MySQL server version we are running (Top left of the shell). We will need that information to provision the RDS instance.
@@ -111,6 +117,9 @@ Data files produced by the MySQL Shell Schema Dump Utility include DDL files for
 Unlike the `mysqldump` utility that outputs only one file, `Utility Dump Schema, Instance and Table` generate a dump directory containing several files, so its divided in several chunks.
 
 The utility does this to increase performance on data streaming. Instead of having only one file with create table statements, one after the other, the tables are spread in different chucks and loaded in parallel, all at the same time with a high number of simultaneous threads connections to the new instance.
+
+
+
 
 image::https://user-images.githubusercontent.com/63274055/160140660-1174385a-fe12-4549-8f1e-ff3846750cca.png[width=600]
 
