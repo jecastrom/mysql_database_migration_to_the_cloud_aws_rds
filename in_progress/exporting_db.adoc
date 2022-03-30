@@ -17,7 +17,7 @@ ifdef::env-github[]
 :idprefix:
 :idseparator: -
 :linkattrs:
-:banner: https://user-images.githubusercontent.com/63274055/160254383-fba6d3c3-6f83-4c1f-8eb0-974bc1bd4e2f.png
+:banner: https://user-images.githubusercontent.com/63274055/160799043-88e475e5-35bf-4e8f-95f2-4e479764b470.png
 :fontawesome-ref: http://fortawesome.github.io/Font-Awesome
 :icon-inline: {user-ref}/#inline-icons
 :icon-attribute: {user-ref}/#size-rotate-and-flip
@@ -104,12 +104,6 @@ We run the following command to create the logical backup:
 ```js
 util.dumpInstance("C:/Users/jcast/data/my_dump_schema")
 ```
-
-
-
-
-
-
 
 
 Data files produced by the MySQL Shell Schema Dump Utility include DDL files for creating the schema structure, compressed .tsv files that contain the data, and .json metadata files.
