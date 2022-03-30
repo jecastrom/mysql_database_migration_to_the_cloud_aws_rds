@@ -138,9 +138,6 @@ RAM:: Temporarily stores information the CPU uses during operation.
 
 
 
-
-
-
 [.result]
 ====
 [cols="1,1,2", options="header"]
