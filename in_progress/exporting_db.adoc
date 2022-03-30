@@ -134,17 +134,18 @@ image::https://github.com/jecastrom/automating_database_migration_to_the_cloud/b
 
 [.result]
 ====
-[cols="1,1,1,1", options="header"]
-.Applications
+[cols="1,1,1,1,1", options="header"]
+.Options for Dump Control
 |===
 |Option
 |Value
 |Default
+|Description
 |Example
 
-|Firefox
-|Browser
-|Mozilla Firefox is an open-source web browser.
+|dryRun
+|true | false
+|false
 It's designed for standards compliance,
 performance, portability.
 
