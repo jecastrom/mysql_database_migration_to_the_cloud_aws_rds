@@ -146,7 +146,6 @@ RAM:: Temporarily stores information the CPU uses during operation.
 |Name
 |Category
 |Description
-|Descrd
 
 |Firefox
 |Browser
