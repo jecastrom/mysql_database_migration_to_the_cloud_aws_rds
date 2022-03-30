@@ -242,7 +242,7 @@ Here is a recap of the options available for this function: For more details on 
 ====
 
 
-image::https://github.com/jecastrom/automating_database_migration_to_the_cloud/blob/main/img/instancedump.gif[width=1200]
+image::https://github.com/jecastrom/automating_database_migration_to_the_cloud/blob/main/img/instancedump.gif[width=1000]
 
 ====
 ''''
