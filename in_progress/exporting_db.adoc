@@ -144,7 +144,7 @@ image::https://github.com/jecastrom/automating_database_migration_to_the_cloud/b
 |Description
 
 |dryRun
-|true | false
+|true / false
 |false
 |
 |
