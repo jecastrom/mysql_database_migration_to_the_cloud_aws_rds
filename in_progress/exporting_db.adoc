@@ -113,16 +113,8 @@ Unlike the `mysqldump` utility that outputs only one file, `Utility Dump Schema,
 The utility does this to increase performance on data streaming. Instead of having only one file with create table statements, one after the other, the tables are spread in different chucks and loaded in parallel, all at the same time with a high number of simultaneous threads connections to the new instance.
 
 image::https://user-images.githubusercontent.com/63274055/160140660-1174385a-fe12-4549-8f1e-ff3846750cca.png[width=600]
-====
-''''
-====
-
-== Creating a dump of the entire database instance (Total of 10 schemas. 60 million rows)
 
 
-
-
-image::https://github.com/jecastrom/automating_database_migration_to_the_cloud/blob/main/img/instancedump.gif[width=800]
 
 
 ====
@@ -164,7 +156,7 @@ image::https://github.com/jecastrom/automating_database_migration_to_the_cloud/b
 |===
 ====
 
-
+Here is a recap of the options available for this function: For more details on this options, go to the documentation for the Dump Instance Utility at the footer of this page.
 
 [.result]
 ====
@@ -195,5 +187,48 @@ image::https://github.com/jecastrom/automating_database_migration_to_the_cloud/b
 |util.dumpInstance("C:/data/inst_dump", {excludeUsers: ["'user_name'@'host_name'"]})
 |Exclude the named user accounts from the dump files
 
+|includeUsers
+|array of strings
+|----
+|util.dumpInstance("C:/data/inst_dump", {includeUsers: ["'user_name'@'host_name'"]})
+|includeUsers
+
+|excludeSchemas
+|array of strings
+|----
+|util.dumpInstance("C:/data/inst_dump", {excludeSchemas: ["sakila", "bank"]})
+|Exclude the named schemas from the dump. Note that the information_schema, mysql, ndbinfo, performance_schema, and sys schemas are always excluded from an instance dump.
+
+|includeSchemas
+|array of strings
+|----
+|util.dumpInstance("C:/data/inst_dump", {includeSchemas: ["sakila", "bank"]})
+|Include only the named schemas in the dump. If you want to dump one or more of these schemas, you can do this using the schema dump utility util.dumpSchemas().
+
+|events
+|true / false
+|true
+|util.dumpInstance("C:/data/inst_dump", {events: false})
+|Include (true) or exclude (false) events for each schema in the dump
+
+|routines
+|true / false
+|true
+|util.dumpInstance("C:/data/inst_dump", {routines: false})
+|Include (true) or exclude (false) functions and stored procedures for each schema in the dump.
+
 |===
+====
+
+== Creating a dump of the entire database instance (Total of 10 schemas. 60 million rows)
+
+====
+''''
+====
+
+
+image::https://github.com/jecastrom/automating_database_migration_to_the_cloud/blob/main/img/instancedump.gif[width=800]
+
+====
+''''
 ====
