@@ -84,10 +84,10 @@ util.dumpInstance("C:/Users/jcast/testdump/my_instance_dump", {dryRun: true})
 
  * Depending on the use case, If the `binary log` is required to be included in the dump, the user running the utility needs `REPLICATION CLIENT` privileges. Otherwise the dump will continue as normal but without the `binary log`. A warning message is displayed:
 
- ```
+ 
  WARNING: Could not fetch the binary log information: MySQL Error 1227 (42000): 
  Access denied; you need (at least one of) the SUPER, REPLICATION CLIENT privilege(s) for this operation
- ```
+ 
 ====
 
 === Creating a dump directly onto a cloud storage bucket
