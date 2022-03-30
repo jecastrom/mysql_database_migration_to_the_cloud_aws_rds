@@ -135,7 +135,7 @@ image::https://github.com/jecastrom/automating_database_migration_to_the_cloud/b
 [.result]
 ====
 [cols="1,1,1,1,1", options="header"]
-.Options for Dump Control
+.Dump: Options for Dump Control
 |===
 |Option
 |Value
@@ -166,3 +166,34 @@ image::https://github.com/jecastrom/automating_database_migration_to_the_cloud/b
 
 
 
+[.result]
+====
+[cols="1,1,1,1,1", options="header"]
+.Dump: Options for filtering
+|===
+|Option
+|Value
+|Default
+|Example
+|Description
+
+|dataOnly
+|true / false
+|false
+|util.dumpInstance("C:/data/instance_dump", {dataOnly: true})
+|Setting this option to `true` includes only the data files for the dumped items in the dump, and does not include DDL files.
+
+|users
+|true / false
+|true
+|util.dumpInstance("C:/data/inst_dump", {users: false})
+|Include (true) or exclude (false) users and their roles and grants in the dump
+
+|excludeUsers
+|array of strings
+|----
+|util.dumpInstance("C:/data/inst_dump", {excludeUsers: ["'user_name'@'host_name'"]})
+|Exclude the named user accounts from the dump files
+
+|===
+====
