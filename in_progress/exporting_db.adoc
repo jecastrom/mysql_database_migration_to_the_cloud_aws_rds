@@ -147,15 +147,15 @@ image::https://github.com/jecastrom/automating_database_migration_to_the_cloud/b
 |true / false
 |false
 |util.dumpInstance("C:/data/instance_dump", {dryRun: true})
+|Display information about what would be dumped with the specified set of options
+
+|
+|
+|
+|
 |
 
-|Arquillian
-|Testing
-|An i
-|Firefox
-|Browser
-
-|Moz
+|
 |
 |
 |
