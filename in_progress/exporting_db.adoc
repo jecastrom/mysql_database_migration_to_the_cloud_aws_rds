@@ -157,6 +157,12 @@ performance, portability.
 |Testing
 |An innovative and highly extensible testing platform.
 Empowers developers to easily create real, automated tests.
+|Firefox
+|Browser
+|Mozilla Firefox is an open-source web browser.
+It's designed for standards compliance,
+performance, portability.
+
 |===
 ====
 
