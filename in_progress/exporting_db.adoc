@@ -121,7 +121,7 @@ image::https://user-images.githubusercontent.com/63274055/160140660-1174385a-fe1
 ''''
 ====
 
-
+Here is a recap of the options available for this function: For more details on this options, go to the documentation for the Dump Instance Utility at the footer of this page.
 
 
 [.result]
@@ -156,7 +156,11 @@ image::https://user-images.githubusercontent.com/63274055/160140660-1174385a-fe1
 |===
 ====
 
-Here is a recap of the options available for this function: For more details on this options, go to the documentation for the Dump Instance Utility at the footer of this page.
+====
+''''
+====
+
+
 
 [.result]
 ====
