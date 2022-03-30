@@ -151,15 +151,15 @@ image::https://github.com/jecastrom/automating_database_migration_to_the_cloud/b
 
 |threads
 |integer
+|4
 |util.dumpInstance("C:/data/inst_dump", {threads: 88})
-|
-|
+|The number of parallel threads to use to dump chunks of data from the MySQL instance.
 
-|
-|
-|
-|
-|
+|defaultCharacterSet
+|"string"
+|utf8mb4
+|util.dumpInstance("C:/data/inst_dump", {defaultCharacterSet: "utf8mb4"})
+|The character set to be used during the session connections that are opened by MySQL Shell to the server for the dump
 
 |===
 ====
