@@ -98,7 +98,7 @@ The first argument of the function is the path where the dump will be stored. If
  
 ** a global read lock is set by the global Shell session using the `FLUSH TABLES WITH READ LOCK`.footnote:[{fn-lock}] statement to get the `GTID position`.footnote:[{fn-gtid}], and open all the connections. This is to have a consistent view of the data.
 
-** The DDL and SQL files are created. There is one .SQL file for every table.
+** The DDL and SQL files are created. There is one .SQL file and a JSON for every table.
 
 ** Chunks of data are created and compresses them by default (Zstd compression).footnote:[{fn-zstd}]
 
