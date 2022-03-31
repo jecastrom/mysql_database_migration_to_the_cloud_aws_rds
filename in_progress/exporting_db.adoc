@@ -61,9 +61,7 @@ For loading:
 
 * util.loadDump
 
-Here I will be focusing on the dump instance. This function has an array of options, very granular to specify arguments to filter what we need or do not need in our instance dump such as specified schemas and tables, users and their roles and grants, events, routines, and triggers from the import.
-
-Users and their roles and grants are excluded from the load by default.
+Here I will be focusing on the dump instance. This function has an array of options, very granular to specify arguments to filter what we need or do not need in our instance dump. Dump Instance dumps the routines, views, the data and users. The mysql, information_schema, performance_schema and SYS schemas are ignored.
 
 Before running the dump, we have the option to do a `dry run`, which will only show us what actions would be performed when we run the utility for real with the options we select.
 
