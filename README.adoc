@@ -64,7 +64,7 @@ image::{image-url-ironhack}[width=70]
 
 In this project my goal is to learn how to take an on premises mysql database, migrate it to AWS RDS and automate the process on a script so it can be done faster and with the least amount of downtime. 
 
-I will be using the mysql shell Schema Dump Utility and the mysql shell Dump Loading Utility to load the data to the AWS RDS instance. I will be using the AWS CLI commands only when working with AWS.
+I will be using the mysql shell Instance Dump Utility and the mysql shell Dump Loading Utility to load the data to the AWS RDS instance. I will be using the AWS CLI commands only when working with AWS and MzSQL.
 
 Go to the https://github.com/jecastrom/automating_database_migration_to_the_cloud/wiki[Wiki] section to see the step by step process of this project.
 
