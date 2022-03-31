@@ -95,9 +95,17 @@ The first argument of the function is the path where the dump will be stored. If
 
 * The process of the dump:
 
-This process uses multiple threads to perform its tasks. Each thread opens its own connection to the target server and can be working on dumping data, dumping DDL or splitting the table data into chunks. 
+This process uses multiple threads to perform its tasks. Each thread opens its own connection to the target server and can be working on dumping data, dumping DDL or splitting the table data into chunks:
  
-First a global read lock is set by the global Shell session using the `FLUSH TABLES WITH READ LOCK`.footnote:[{fn-lock}] statement to get the `GTID position`.footnote:[{fn-gtid}]
+** a global read lock is set by the global Shell session using the `FLUSH TABLES WITH READ LOCK`.footnote:[{fn-lock}] statement to get the `GTID position`.footnote:[{fn-gtid}], and open all the connections. This is to have a consistent view of the data.
+
+** The DDL and SQL files are created. There is one .SQL file for every table.
+
+** Chunks of data are created
+
+
+
+
 
 
 
