@@ -90,20 +90,26 @@ util.dumpInstance("C:/Users/jcast/testdump/my_instance_dump", {dryRun: true})
  
 ====
 
-=== Creating a dump directly onto a cloud storage bucket
+The first argument of the function is the path where the dump will be stored. If no path its specified, but only a name, a new directory with the given name will be created at `C:\Program Files\MySQL\MySQL Shell 8.0\bin`. It is a directory that is going to be created, not a single file. Next we can specify arguments, options related to how we want the dump created. 
 
-The MySQL Shell Dump Utilities support the export directly into a `Oracle Cloud Infrastructure Object Storage bucket`. However to export a dump into an AWS S3 is currently not supportted:
+* The process of the dump:
 
-WARNING: Util.dumpInstance: Directory handling for s3 protocol is not supported. (ArgumentError)
+This process uses multiple threads to perform its tasks. Each thread opens its own connection to the target server and can be working on dumping data, dumping DDL or splitting the table data into chunks. 
+ 
+First a global read lock is set by the global Shell session using the  `FLUSH TABLES WITH READ LOCK` statement.
+
+[NOTE]
+====
+`FLUSH TABLES WITH READ LOCK` closes all open tables and locks all tables for all databases with global read lock.
+====
+
+
+
+
 
 ====
 ''''
 ====
-
-First we log in to the MySQL Shell with the MySQL credentials. Then we find out the MySQL server version we are running (Top left of the shell). We will need that information to provision the RDS instance.
-
-We run the following command to create the logical backup:
-
 
 
 ```js
@@ -125,7 +131,11 @@ The utility does this to increase performance on data streaming. Instead of havi
 
 image::https://user-images.githubusercontent.com/63274055/160140660-1174385a-fe12-4549-8f1e-ff3846750cca.png[width=600]
 
+=== Creating a dump directly onto a cloud storage bucket
 
+The MySQL Shell Dump Utilities support the export directly into a `Oracle Cloud Infrastructure Object Storage bucket`. However to export a dump into an AWS S3 is currently not supportted:
+
+WARNING: Util.dumpInstance: Directory handling for s3 protocol is not supported. (ArgumentError)
 
 
 ====
