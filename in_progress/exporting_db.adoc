@@ -4,6 +4,7 @@
 :description:
 :fn-lock: `FLUSH TABLES WITH READ LOCK` closes all open tables and locks all tables for all databases with global read lock.
 :fn-gtid: Traditional MySQL replication is based on relative coordinates — each replica keeps track of its position with respect to its current primary’s binary log files. GTID enhances this setup by assigning a unique identifier to every transaction, and each MySQL server keeps track of which transactions it has already executed. This permits “auto-positioning,” the ability for a replica to be pointed at a primary instance without needing to specify a binlog filename or position in the CHANGE PRIMARY statement.
+:fn-zstd: Zstandard is a fast compression algorithm, providing high compression ratios. It also offers a special mode for small data, called dictionary compression. The reference library offers a very wide range of speed / compression trade-off, and is backed by an extremely fast decoder. Zstandard library is provided as open source software using a BSD license.
 ifdef::env-github[]
 :sectnums:
 :tip-caption: :bulb:
@@ -101,7 +102,7 @@ This process uses multiple threads to perform its tasks. Each thread opens its o
 
 ** The DDL and SQL files are created. There is one .SQL file for every table.
 
-** Chunks of data are created
+** Chunks of data are created and compresses them by default (Zstd compression).footnote:[{fn-zstd}]
 
 
 
