@@ -255,5 +255,3 @@ image::https://github.com/jecastrom/automating_database_migration_to_the_cloud/b
 ''''
 ====
 
-footnote:[{fn-lock}]
-footnote:[{fn-gtid}]
