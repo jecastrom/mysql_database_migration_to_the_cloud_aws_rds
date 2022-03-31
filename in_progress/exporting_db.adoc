@@ -2,7 +2,8 @@
 :linkcss: boot-darkly.css
 :my-name: Jorge Castro DAPT NOV2021
 :description:
-//:fn-xxx: Add the explanation foot note here bla bla
+:fn-lock: `FLUSH TABLES WITH READ LOCK` closes all open tables and locks all tables for all databases with global read lock.
+:fn-gtid: Traditional MySQL replication is based on relative coordinates — each replica keeps track of its position with respect to its current primary’s binary log files. GTID enhances this setup by assigning a unique identifier to every transaction, and each MySQL server keeps track of which transactions it has already executed. This permits “auto-positioning,” the ability for a replica to be pointed at a primary instance without needing to specify a binlog filename or position in the CHANGE PRIMARY statement.
 ifdef::env-github[]
 :sectnums:
 :tip-caption: :bulb:
@@ -96,12 +97,8 @@ The first argument of the function is the path where the dump will be stored. If
 
 This process uses multiple threads to perform its tasks. Each thread opens its own connection to the target server and can be working on dumping data, dumping DDL or splitting the table data into chunks. 
  
-First a global read lock is set by the global Shell session using the  `FLUSH TABLES WITH READ LOCK` statement.
+First a global read lock is set by the global Shell session using the `FLUSH TABLES WITH READ LOCK`.footnote:[{lock}] statement to get the `GTID position`.footnote:[{gtid}]
 
-[NOTE]
-====
-`FLUSH TABLES WITH READ LOCK` closes all open tables and locks all tables for all databases with global read lock.
-====
 
 
 
