@@ -1,4 +1,4 @@
-= Mini Project - Automating MySQL Database migration to the cloud (AWS RDS MySQL instance)
+= Mini Project - MySQL Database migration to the cloud (AWS RDS MySQL instance)
 :stylesheet: boot-darkly.css
 :linkcss: boot-darkly.css
 :image-url-ironhack: https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png
