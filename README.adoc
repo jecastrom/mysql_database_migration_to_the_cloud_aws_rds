@@ -62,7 +62,7 @@ image::{image-url-ironhack}[width=70]
 
 == About the project
 
-In this project my goal is to learn how to take an on premises mysql database, migrate it to AWS RDS and automate the process on a script so it can be done faster and with the least amount of downtime. 
+In this project my goal is to learn how to take an on premises mysql database and an instance, migrate it to AWS RDS. Then create a script to automate this process. 
 
 I will be using the mysql shell Instance Dump Utility and the mysql shell Dump Loading Utility to load the data to the AWS RDS instance. I will be using the AWS CLI commands only when working with AWS and MzSQL.
 
